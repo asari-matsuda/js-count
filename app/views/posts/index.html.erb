@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <div class="head-bar">
+    JsCount
+  </div>
+
+  <div class="main">
+    <%= notice %>
+    <div class="messages" id="list" >
+        <% @posts.each do |post| %>
+          <div class="message" >
+            <%= post.text %>
+            <button class="delete-button">
+              <%= link_to 'delete', post_path(post.id), class: "delete-link", method: :delete %>
+            </button>
+          </div>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="foot-bar">
+    <%= form_with(model: @post, class: "form", id: "form-id") do |f| %>
+      <div class="form-input" id="number">
+        <%= f.text_field :text, class: "form-text", placeholder: "文字を入力してください" %>
+      </div>
+      <div id="num-content">0文字</div>
+      <%= f.submit "送信", class: "submit", id: "submit-id" %>
+    <% end %>
+  </div>
+</div> 
